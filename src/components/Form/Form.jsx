@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
-export default function Form({ submit }) {
+import { useDispatch} from 'react-redux';
+import { addContacts } from 'redux/contacts';
+export default function Form() {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const handelInput = even => {
@@ -22,16 +24,12 @@ export default function Form({ submit }) {
     setName('');
     setNumber('');
 }
-  const handelSubmit = even => {
-    even.preventDefault();
-    submit({ name, number });
-    handelClick();
-  };
-
-
   return (
     <div>
-      <form id='form' action="" onSubmit={handelSubmit}>
+      <form id='form' action="" onSubmit={(even)=>{
+        even.preventDefault();
+        handelClick();
+        return dispatch(addContacts({name,number}))}}>
         <h2>Name</h2>
         <input
           type="text"
@@ -58,6 +56,3 @@ export default function Form({ submit }) {
     </div>
   );
 }
-Form.propTypes = {
-  submit: PropTypes.func.isRequired,
-};
