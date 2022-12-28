@@ -12,7 +12,6 @@ const persistConfig = {
     key: 'root',
     storage,
 }
-console.log(contacts.reducer);
 const persistReduser = persistReducer(persistConfig, contacts.reducer);
 export const store = configureStore({
     reducer:{

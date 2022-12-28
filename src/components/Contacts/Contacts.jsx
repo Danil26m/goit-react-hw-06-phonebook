@@ -13,7 +13,9 @@ export default function Contacts({cont}) {
             <p>
               {m.name}: {m.number}
             </p>
-            <button type="button" onClick={() => dispatch(deleteComponent(m.id))}>
+            <button type="button" onClick={() => {
+              
+              return dispatch(deleteComponent(m.id))}}>
               delete
             </button>
           </li>
