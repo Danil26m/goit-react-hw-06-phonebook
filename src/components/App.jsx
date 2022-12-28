@@ -2,8 +2,9 @@ import Form from './Form/Form';
 import Contacts from './Contacts/Contacts';
 import { useSelector } from 'react-redux';
 export default function App() {
-  const contacts = useSelector(state=>state.contacts.value);
+  const contacts = useSelector(state=>state.contacts);
   const filter = useSelector(state=>state.filter);
+  console.log(contacts);
   const filtered = () => {
     if (filter) {
       return contacts.filter(m =>
@@ -45,8 +46,8 @@ export default function App() {
       <Form/>
 
       <h2>Contacts</h2>
-      {contacts &&
-        <Contacts cont={f}/>
+      {contacts?.length ?
+        <Contacts cont={f}/>:''
       }
     </div>
   );

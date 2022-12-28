@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch} from 'react-redux';
 import { addContacts } from 'redux/contacts';
+import { nanoid } from 'nanoid';
 export default function Form() {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
@@ -29,7 +30,7 @@ export default function Form() {
       <form id='form' action="" onSubmit={(even)=>{
         even.preventDefault();
         handelClick();
-        return dispatch(addContacts({name,number}))}}>
+        return dispatch(addContacts({name,number,id: nanoid()}))}}>
         <h2>Name</h2>
         <input
           type="text"

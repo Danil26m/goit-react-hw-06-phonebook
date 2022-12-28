@@ -1,24 +1,26 @@
 import { createSlice} from "@reduxjs/toolkit";
 
 
-export const contacts = createSlice({
+const contacts = createSlice({
     name:'contacts',
-    initialState:{value: [] },
+    initialState:[] ,
     reducers:{
-        addContacts(state,actions){
-    const {name,number} = actions.payload;
-    const bulElement = state.value.find(con => con.name === name);
+        addContacts(state,action){
+    const {name,number,id} = action.payload;
+    const bulElement = state.find(con => con.name === name);
     if (bulElement) {
       return alert(`${name} is already contact`);
     } else {
-      state.value.push({ id: state.value.length, name, number });
+      state.push({ id, name, number });
     }
     
         },
-        deleteComponent(state,actions){
-          return state.value.filter(cont => cont.id !== actions.payload);
+        deleteComponent(state,action){
+          console.log();
+          return state.filter(cont => cont.id !== action.payload);
           
         },
     }
 })
+export default  contacts.reducer;
 export const{deleteComponent,addContacts} = contacts.actions;
