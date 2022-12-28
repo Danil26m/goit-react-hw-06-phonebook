@@ -2,8 +2,8 @@ import Form from './Form/Form';
 import Contacts from './Contacts/Contacts';
 import { useSelector } from 'react-redux';
 export default function App() {
-  const contacts = useSelector(state=>state.contacts);
-  const filter = useSelector(state=>state.filter);
+  const contacts = useSelector(state => state.contacts);
+  const filter = useSelector(state => state.filter);
   console.log(contacts);
   const filtered = () => {
     if (filter) {
@@ -13,24 +13,6 @@ export default function App() {
     }
     return contacts;
   };
-  // useEffect(() => {
-  //   const locale = JSON.parse(localStorage.getItem('contacts'));
-  //   if (locale) {
-  //     setContacts(locale);
-  //   }
-  // }, []);
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
-  // const nameContact = data => {
-  //   const { name, number } = data;
-  //   const bulElement = contacts.find(con => con.name === name);
-  //   if (bulElement) {
-  //     alert(`${name} is already contact`);
-  //   } else {
-  //     setContacts(prevState => [...prevState,{ id: contacts.length, name, number },]);
-  //   }
-  // };
   const f = filtered();
   return (
     <div
@@ -43,12 +25,10 @@ export default function App() {
       }}
     >
       <h1>Phonebook</h1>
-      <Form/>
+      <Form />
 
       <h2>Contacts</h2>
-      {contacts?.length ?
-        <Contacts cont={f}/>:''
-      }
+      {contacts?.length ? <Contacts cont={f} /> : ''}
     </div>
   );
 }
